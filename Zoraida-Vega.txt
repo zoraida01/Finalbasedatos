@@ -1,0 +1,48 @@
+plsql.execute <<-SQL
+
+
+
+DECLARE
+  -- 
+  PROCEDURE CALCULAR_SIMULACION (tasa_efectiva_anual decimal (15,2)
+                                 numero_total_cuotas  integer,
+                                valor_prestamo decimal,
+                                )
+  IS
+  BEGIN
+    
+    DELETE  * FROM table amortizacion;
+    
+
+  END;
+BEGIN
+  
+ tasa nominal mensual = (1 + (tasa_efectiva_anual / 100)) ** (30 / 360) - 1
+ cuota_mensual = n / d
+ n = tasa * saldo
+ d = 1 - (1 + tasa) ** (-total_cuotas) 
+ 
+END;
+ BEGIN
+    --ingresamos los datos--
+    CALCULAR_SIMULACION (tasa_efectiva_anua,numero_total_cuotas,valor_prestamo)
+   
+     END;
+     
+
+
+---------
+SQL
+
+plsql.execute <<-SQL
+
+create view PLAN_AMORTIZACION as
+  (numero_cuota,cuota_mensual,abono_capital,abono_interes,saldo_decimal)
+  select * from amortizacion
+
+ 
+SQL
+
+plsql.execute <<-SQL
+
+SQL
